@@ -1,3 +1,10 @@
+//////////////////////////////////////////////
+//                 CREDITS                  //
+// Author: Enrico Malaguti Ferrari (xxyrnn) //
+// GitHub: https://github.com/xxyrnn        //
+// Instagram: maybe_enrico                  //
+//////////////////////////////////////////////
+
 package com.xxyrnn.snake
 
 class GameEngine(private val gridWidth: Int, private val gridHeight: Int) {
