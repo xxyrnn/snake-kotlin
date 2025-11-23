@@ -29,7 +29,9 @@ just please give me credits for the original code
 
 ## TODO
 
-- [ ] add icon
-- [ ] change snake and food graphics
-- [ ] add padding
-- [ ] add persistence and high score
+- make snake hit wall on beginning of head instead of center (almost done)
+- add check for rounded or squared corners
+- add persistence and high score
+- add vibration on collision with food
+  - add option to disable vibration
+- add icon
