@@ -19,7 +19,7 @@ import kotlin.math.abs
 
 class GameView(context: Context) : View(context) {
     private val paint = Paint()
-    private val gridSize = 40
+    private val gridSize = 60
     private lateinit var gameEngine: GameEngine
     private val handler = Handler(Looper.getMainLooper())
     private val gameRunnable = object : Runnable {
@@ -27,7 +27,7 @@ class GameView(context: Context) : View(context) {
             gameEngine.updateGame()
             invalidate()
 
-            if (!gameEngine.isGameOver)
+            if (gameEngine.isGameStarted && !gameEngine.isGameOver)
                 handler.postDelayed(this, 200)
         }
     }
@@ -56,16 +56,16 @@ class GameView(context: Context) : View(context) {
         if (!::gameEngine.isInitialized)
             return
 
-        canvas.drawColor(Color.BLACK) // background
+        canvas.drawColor(Color.parseColor("#111111")) // background
 
         // draw overlay text
         paint.color = Color.YELLOW
-        paint.textSize = 100f
+        paint.textSize = width * 0.09f
         paint.textAlign = Paint.Align.CENTER
 
         if (!gameEngine.isGameStarted) {
             canvas.drawText(
-                "Press to start",
+                "Press anywhere to start",
                 (width / 2).toFloat(),
                 (height / 2).toFloat(),
                 paint
@@ -77,9 +77,9 @@ class GameView(context: Context) : View(context) {
                 (height / 2).toFloat(),
                 paint
             )
-            paint.textSize = 50f
+            paint.textSize = width * 0.05f
             canvas.drawText(
-                "Press to restart",
+                "Press anywhere to restart",
                 (width / 2).toFloat(),
                 ((height / 2) + 50).toFloat(),
                 paint
@@ -87,31 +87,30 @@ class GameView(context: Context) : View(context) {
         }
 
         // draw snake
-        paint.color = Color.GREEN
+        paint.color = Color.parseColor("#8a2be2")
 
         for (segment in gameEngine.snake) {
-            canvas.drawRect(
+            canvas.drawCircle(
                 segment.first * gridSize.toFloat(),
                 segment.second * gridSize.toFloat(),
-                (segment.first + 1) * gridSize.toFloat(),
-                (segment.second + 1) * gridSize.toFloat(),
+                (gridSize / 2).toFloat(),
                 paint
             )
         }
 
         // draw food
-        paint.color = Color.RED
-        canvas.drawRect(
+        paint.color = Color.parseColor("#0abdc6")
+        canvas.drawCircle(
             gameEngine.food.first * gridSize.toFloat(),
             gameEngine.food.second * gridSize.toFloat(),
-            (gameEngine.food.first + 1) * gridSize.toFloat(),
-            (gameEngine.food.second + 1) * gridSize.toFloat(),
+            (gridSize / 2).toFloat(),
             paint
         )
 
         // draw score
         paint.color = Color.WHITE
-        paint.textSize = 50f
+        paint.textSize = width * 0.05f
+        paint.textAlign = Paint.Align.LEFT
         canvas.drawText("Score: ${gameEngine.score}", 10f, 50f, paint)
     }
 

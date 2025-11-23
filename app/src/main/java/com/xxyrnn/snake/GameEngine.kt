@@ -52,14 +52,23 @@ class GameEngine(private val gridWidth: Int, private val gridHeight: Int) {
 
     private fun generateFood() {
         do {
-            food = Pair((0 until gridWidth).random(), (0 until gridHeight).random())
+            food = Pair((1 until gridWidth).random(), (1 until gridHeight).random())
         } while (food in snake)
     }
 
     private fun checkCollisions(newHead: Pair<Int, Int>) {
-        if (newHead.first < 0 || newHead.first >= gridWidth || // collision with wall
-            newHead.second < 0 || newHead.second >= gridHeight ||
-            newHead in snake.drop(1)) // collision with self
+        val frontX = when {
+            direction.first > 0 -> newHead.first + 1
+            else -> newHead.first
+        }
+        val frontY = when {
+            direction.second > 0 -> newHead.second + 1
+            else -> newHead.second
+        }
+
+        if (frontX < 0 || frontX > gridWidth ||
+            frontY < 0 || frontY > gridHeight ||
+            newHead in snake.drop(1))
             isGameOver = true
     }
 
