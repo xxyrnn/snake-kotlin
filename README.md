@@ -6,7 +6,7 @@ The famous game called Snake, written in Kotlin and playable on Android devices
 
 ## Installation
 
-~~Search Snake on the Google Play Store and install it~~ *NOT YET AVAILABLE*
+~~Search Snake on the Google Play Store and install it~~ *NOT AVAILABLE YET*
 
 ## Modify the code
 
