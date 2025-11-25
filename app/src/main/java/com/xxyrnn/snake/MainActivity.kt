@@ -7,6 +7,7 @@
 
 package com.xxyrnn.snake
 
+import android.os.Build
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -21,8 +22,10 @@ import com.xxyrnn.snake.ui.theme.SnakeTheme
 import android.view.View
 import android.view.WindowInsets
 import android.view.WindowInsetsController
+import androidx.annotation.RequiresApi
 
 class MainActivity : ComponentActivity() {
+    @RequiresApi(Build.VERSION_CODES.R)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
