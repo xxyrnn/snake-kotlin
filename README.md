@@ -29,6 +29,7 @@ just please give me credits for the original code
 
 ## TODO
 
+- add visual grid and make snake squared
 - make snake hit wall on beginning of head instead of center (almost done)
 - add check for rounded or squared corners
 - add persistence and high score
