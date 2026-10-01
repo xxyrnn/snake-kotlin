@@ -66,8 +66,8 @@ class GameEngine(private val gridWidth: Int, private val gridHeight: Int) {
             else -> newHead.second
         }
 
-        if (frontX < 0 || frontX > gridWidth ||
-            frontY < 0 || frontY > gridHeight ||
+        if (frontX !in 0..gridWidth ||
+            frontY !in 0..gridHeight ||
             newHead in snake.drop(1))
             isGameOver = true
     }

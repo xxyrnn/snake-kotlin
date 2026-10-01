@@ -16,6 +16,7 @@ import android.os.Looper
 import android.view.MotionEvent
 import android.view.View
 import kotlin.math.abs
+import androidx.core.graphics.toColorInt
 
 class GameView(context: Context) : View(context) {
     private val paint = Paint()
@@ -56,7 +57,7 @@ class GameView(context: Context) : View(context) {
         if (!::gameEngine.isInitialized)
             return
 
-        canvas.drawColor(Color.parseColor("#111111")) // background
+        canvas.drawColor("#111111".toColorInt()) // background
 
         // draw overlay text
         paint.color = Color.YELLOW
@@ -87,7 +88,7 @@ class GameView(context: Context) : View(context) {
         }
 
         // draw snake
-        paint.color = Color.parseColor("#8a2be2")
+        paint.color = "#8a2be2".toColorInt()
 
         for (segment in gameEngine.snake) {
             canvas.drawCircle(
@@ -99,7 +100,7 @@ class GameView(context: Context) : View(context) {
         }
 
         // draw food
-        paint.color = Color.parseColor("#0abdc6")
+        paint.color = "#0abdc6".toColorInt()
         canvas.drawCircle(
             gameEngine.food.first * gridSize.toFloat(),
             gameEngine.food.second * gridSize.toFloat(),
