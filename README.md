@@ -21,7 +21,7 @@ just please give me credits for the original code
 
 2. Open the project in Android Studio
 3. Modify the code inside the `src/main` folder
-	- `MainActivity.kt`: contains the code that to show everything on the screen
+	- `MainActivity.kt`: contains the code to show everything on the screen
 	- `GameView.kt`: contains the graphics of the game
 	- `GameEngine.kt`: contains the logic of the game
 
